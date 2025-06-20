@@ -43,16 +43,16 @@ python replay_inputs.py --compile --packing
 
 Based on comprehensive testing of all flag combinations:
 
-| Configuration | Flash Attention | Compile | Packing | Result | Notes |
-|---------------|-----------------|---------|---------|--------|-------|
-| Default | | | | ✅ Success | Most stable configuration |
-| `--flash-attn` | ✅ | | | ✅ Success | Flash Attention works without packing |
-| `--compile` | | ✅ | | ✅ Success | Compilation works without Flash Attention |
-| `--packing` | | | ✅ | ✅ Success | Packing works without Flash Attention |
-| `--flash-attn --compile` | ✅ | ✅ | | ❌ **FAIL** | Flash Attention + compile incompatible |
-| `--flash-attn --packing` | ✅ | | ✅ | ✅ Success | Flash Attention + packing works |
-| `--compile --packing` | | ✅ | ✅ | ✅ Success | Compile + packing works without Flash Attention |
-| `--flash-attn --compile --packing` | ✅ | ✅ | ✅ | ✅ Success | Works when packing resolves compilation issue |
+| Configuration | Flash Attention | Compile | Packing | Result |
+|---------------|-----------------|---------|---------|--------|
+| Default | | | | ✅ Success |
+| `--flash-attn` | ✅ | | | ✅ Success |
+| `--compile` | | ✅ | | ✅ Success |
+| `--packing` | | | ✅ | ✅ Success |
+| `--flash-attn --compile` | ✅ | ✅ | | ❌ **FAIL** |
+| `--flash-attn --packing` | ✅ | | ✅ | ✅ Success |
+| `--compile --packing` | | ✅ | ✅ | ✅ Success |
+| `--flash-attn --compile --packing` | ✅ | ✅ | ✅ | ✅ Success |
 
 
 ### Dependencies
