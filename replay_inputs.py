@@ -111,7 +111,7 @@ def replay_single_input(actor, dump_data, device, verbose=True):
         }
 
 
-def replay_inputs(no_flash_attn=False, compile=False, no_packing=False):
+def replay_inputs(flash_attn=False, compile=False, packing=False):
     """Replay all available input dumps"""
     
    
@@ -121,9 +121,9 @@ def replay_inputs(no_flash_attn=False, compile=False, no_packing=False):
     print(f"\n1. Initializing actor ...")
     try:
         components = init_actor_standalone(
-            no_flash_attn=no_flash_attn,
+            no_flash_attn=not flash_attn,
             compile=compile,
-            no_packing=no_packing
+            no_packing=not packing
         )
         actor = components['actor']
         device = torch.cuda.current_device() if torch.cuda.is_available() else 'cpu'
@@ -150,16 +150,16 @@ def replay_inputs(no_flash_attn=False, compile=False, no_packing=False):
 
 def main():
     parser = argparse.ArgumentParser(description="Replay actor inputs for debugging")
-    parser.add_argument('--no-flash-attn', action='store_true', help="Disable Flash Attention")
+    parser.add_argument('--flash-attn', action='store_true', help="Enable Flash Attention")
     parser.add_argument('--compile', action='store_true', help="Enable PyTorch compilation (without DeepCompile)")
-    parser.add_argument('--no-packing', action='store_true', help="Disable packing samples (may fix compilation with flash attention)")
+    parser.add_argument('--packing', action='store_true', help="Enable packing samples")
     
     args = parser.parse_args()
     
     replay_inputs(
-        no_flash_attn=args.no_flash_attn, 
+        flash_attn=args.flash_attn, 
         compile=args.compile, 
-        no_packing=args.no_packing,
+        packing=args.packing,
     )
 
 
