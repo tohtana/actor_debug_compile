@@ -1,0 +1,44 @@
+[2025-06-20 22:35:13,314] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-06-20 22:35:13,442] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-06-20 22:35:14,604] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+You are attempting to use Flash Attention 2.0 with a model not initialized on GPU. Make sure to move the model to GPU after initializing it on CPU with `model.to('cuda')`.
+Starting at: 2025-06-20 22:35:15.166910
+
+1. Initializing actor ...
+Initializing actor model for debugging...
+Note: Running in standalone mode (no distributed training)
+Using model: meta-llama/Llama-3.1-8B-Instruct
+Flash Attention: True
+BF16: True
+PyTorch Compile: False
+Packing Samples: True
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 102.71it/s]
+Actor model initialized successfully!
+Actor model parameters: 8030261248
+Actor model moved to GPU: 0
+Tokenizer configured. Vocab size: 128256
+Actor initialized successfully on device: 0
+
+2. Loading input dump ...
+
+3. Replaying an input ...
+
+=== Replaying Input ===
+Source: actor_inputs_rank0_20250619_052658_128923.pkl
+Timestamp: 20250619_052658_128923
+Rank: 0
+Batch size: 2
+Sequence length: 1259
+[INFO 06-20 22:35:19.963 actor.py:213] [localhost][806801][rNA] Actor forward start. sequences=torch.Size([1, 2328])  padded_sequences=torch.Size([1, 2328]) stride (1, 1) storage_offset 0 foward_attention_mask=None position_ids=torch.Size([1, 2328]) padded_position_ids=torch.Size([1, 2328]) stride (1, 1) storage_offset 0
+[INFO 06-20 22:35:19.963 actor.py:213] [localhost][806801][rNA] Actor forward start. sequences=torch.Size([1, 2328])  padded_sequences=torch.Size([1, 2328]) stride (1, 1) storage_offset 0 foward_attention_mask=None position_ids=torch.Size([1, 2328]) padded_position_ids=torch.Size([1, 2328]) stride (1, 1) storage_offset 0
+[INFO 06-20 22:35:20.477 actor.py:216] [localhost][806801][rNA] Actor forward end
+[INFO 06-20 22:35:20.477 actor.py:216] [localhost][806801][rNA] Actor forward end
+Replay successful!
+DEBUG:filelock:Attempting to acquire lock 134117353239568 on /home/mtanaka/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Lock 134117353239568 acquired on /home/mtanaka/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Attempting to release lock 134117353239568 on /home/mtanaka/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Lock 134117353239568 released on /home/mtanaka/.triton/autotune/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Attempting to acquire lock 134117351733840 on /home/mtanaka/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+DEBUG:filelock:Lock 134117351733840 acquired on /home/mtanaka/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+DEBUG:filelock:Attempting to release lock 134117351733840 on /home/mtanaka/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock
+DEBUG:filelock:Lock 134117351733840 released on /home/mtanaka/.triton/autotune/Fp16Matmul_4d_kernel.pickle.lock

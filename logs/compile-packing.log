@@ -1,0 +1,218 @@
+[2025-06-20 22:35:32,863] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-06-20 22:35:32,981] [INFO] [real_accelerator.py:254:get_accelerator] Setting ds_accelerator to cuda (auto detect)
+[2025-06-20 22:35:34,104] [INFO] [logging.py:107:log_dist] [Rank -1] [TorchCheckpointEngine] Initialized with serialization = False
+Starting at: 2025-06-20 22:35:34.662131
+
+1. Initializing actor ...
+Initializing actor model for debugging...
+Note: Running in standalone mode (no distributed training)
+Using model: meta-llama/Llama-3.1-8B-Instruct
+Flash Attention: False
+BF16: True
+PyTorch Compile: True
+Packing Samples: True
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 110.80it/s]
+Actor model initialized successfully!
+Actor model parameters: 8030261248
+Actor model moved to GPU: 0
+Tokenizer configured. Vocab size: 128256
+Enabling PyTorch compilation (without DeepSpeed DeepCompile)...
+PyTorch compilation enabled successfully!
+Note: DeepSpeed config has deepcompile: False, but engine.compile() was called
+Actor initialized successfully on device: 0
+
+2. Loading input dump ...
+
+3. Replaying an input ...
+
+=== Replaying Input ===
+Source: actor_inputs_rank0_20250619_052658_128923.pkl
+Timestamp: 20250619_052658_128923
+Rank: 0
+Batch size: 2
+Sequence length: 1259
+[INFO 06-20 22:35:41.229 actor.py:213] [localhost][807339][rNA] Actor forward start. sequences=torch.Size([1, 2328])  padded_sequences=torch.Size([1, 2328]) stride (1, 1) storage_offset 0 foward_attention_mask=None position_ids=torch.Size([1, 2328]) padded_position_ids=torch.Size([1, 2328]) stride (1, 1) storage_offset 0
+[INFO 06-20 22:35:41.229 actor.py:213] [localhost][807339][rNA] Actor forward start. sequences=torch.Size([1, 2328])  padded_sequences=torch.Size([1, 2328]) stride (1, 1) storage_offset 0 foward_attention_mask=None position_ids=torch.Size([1, 2328]) padded_position_ids=torch.Size([1, 2328]) stride (1, 1) storage_offset 0
+[INFO 06-20 22:35:48.439 actor.py:216] [localhost][807339][rNA] Actor forward end
+[INFO 06-20 22:35:48.439 actor.py:216] [localhost][807339][rNA] Actor forward end
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] Traceback (most recent call last):
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 730, in identify_mutated_tensors
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ttir_module, ordered_tensor_names = generate_ttir(kernel, kwargs)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 355, in generate_ttir
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ttir_module = src.make_ir(options, codegen_fns, module_map, context)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/compiler.py", line 81, in make_ir
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1402, in ast_to_ttir
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     generator.visit(fn.parse())
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 453, in visit_Module
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ast.NodeVisitor.generic_visit(self, node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 426, in generic_visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     self.visit(item)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 531, in visit_FunctionDef
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     self.visit_compound_statement(node.body)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 446, in visit_compound_statement
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     self.visit(stmt)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 602, in visit_Assign
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     values = _sanitize_value(self.visit(node.value))
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                              ^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 641, in visit_BinOp
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     rhs = self.visit(node.right)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 641, in visit_BinOp
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     rhs = self.visit(node.right)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1232, in visit_Call
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     fn = _unwrap_if_constexpr(self.visit(node.func))
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                               ^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1336, in visit
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     raise CompilationError(self.jit_fn.src, self.cur_node, repr(e)) from None
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] triton.compiler.errors.CompilationError: at 22:40:
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     total_classes,
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     class_start_idx,  # Useful for tensor parallel when each rank only has a subset of classes
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     n_cols,  # shapes
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     logits_row_stride,  # strides
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     BLOCK_SIZE: tl.constexpr,
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     HAS_SMOOTHING: tl.constexpr,
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     # if SPLIT (e.g. tensor parallel), don't include the LSE in the loss since it's not the final LSE
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     SPLIT: tl.constexpr,
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     PRECOMPUTED_LSE: tl.constexpr,  # If LSE is already computed (also no smoothing and logit_scale == 1.0)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] ):
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     row_idx = tl.program_id(0)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     logits_ptr = logits_ptr + row_idx * logits_row_stride.to(tl.int64)
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                                         ^
+W0620 22:35:48.641000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] AttributeError("'constexpr' object has no attribute 'to'")
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] Encountered an exception in identify_mutated_tensors, assuming every input is mutated
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] Traceback (most recent call last):
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 730, in identify_mutated_tensors
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ttir_module, ordered_tensor_names = generate_ttir(kernel, kwargs)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/torch/_higher_order_ops/triton_kernel_wrap.py", line 355, in generate_ttir
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ttir_module = src.make_ir(options, codegen_fns, module_map, context)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/compiler.py", line 81, in make_ir
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return ast_to_ttir(self.fn, self, context=context, options=options, codegen_fns=codegen_fns,
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1402, in ast_to_ttir
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     generator.visit(fn.parse())
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 453, in visit_Module
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ast.NodeVisitor.generic_visit(self, node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 426, in generic_visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     self.visit(item)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 531, in visit_FunctionDef
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     self.visit_compound_statement(node.body)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 446, in visit_compound_statement
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     self.visit(stmt)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 602, in visit_Assign
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     values = _sanitize_value(self.visit(node.value))
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                              ^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 641, in visit_BinOp
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     rhs = self.visit(node.right)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 641, in visit_BinOp
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     rhs = self.visit(node.right)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1330, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     ret = super().visit(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]           ^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/ast.py", line 418, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     return visitor(node)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]            ^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1232, in visit_Call
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     fn = _unwrap_if_constexpr(self.visit(node.func))
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                               ^^^^^^^^^^^^^^^^^^^^^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]   File "/opt/conda/lib/python3.11/site-packages/triton/compiler/code_generator.py", line 1336, in visit
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     raise CompilationError(self.jit_fn.src, self.cur_node, repr(e)) from None
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] triton.compiler.errors.CompilationError: at 22:40:
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     total_classes,
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     class_start_idx,  # Useful for tensor parallel when each rank only has a subset of classes
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     n_cols,  # shapes
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     logits_row_stride,  # strides
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     BLOCK_SIZE: tl.constexpr,
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     HAS_SMOOTHING: tl.constexpr,
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     # if SPLIT (e.g. tensor parallel), don't include the LSE in the loss since it's not the final LSE
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     SPLIT: tl.constexpr,
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     PRECOMPUTED_LSE: tl.constexpr,  # If LSE is already computed (also no smoothing and logit_scale == 1.0)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] ):
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     row_idx = tl.program_id(0)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]     logits_ptr = logits_ptr + row_idx * logits_row_stride.to(tl.int64)
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0]                                         ^
+W0620 22:35:48.657000 807339 site-packages/torch/_higher_order_ops/triton_kernel_wrap.py:751] [17/0] AttributeError("'constexpr' object has no attribute 'to'")
+Replay successful!
+DEBUG:filelock:Attempting to acquire lock 135689937955984 on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Lock 135689937955984 acquired on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Attempting to release lock 135689937955984 on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Lock 135689937955984 released on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_2d_kernel.pickle.lock
+DEBUG:filelock:Attempting to acquire lock 135689939238352 on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_4d_kernel.pickle.lock
+DEBUG:filelock:Lock 135689939238352 acquired on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_4d_kernel.pickle.lock
+DEBUG:filelock:Attempting to release lock 135689939238352 on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_4d_kernel.pickle.lock
+DEBUG:filelock:Lock 135689939238352 released on /tmp/torchinductor_mtanaka/triton/0/Fp16Matmul_4d_kernel.pickle.lock

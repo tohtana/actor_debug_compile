@@ -2,8 +2,6 @@
 
 This repository contains debugging utilities for isolating and testing OpenRLHF actor model behavior without distributed training dependencies.
 
-## What is replay_inputs.py?
-
 `replay_inputs.py` replays previously captured actor model inputs to test model behavior in isolation. It's designed to help debug issues that occur during OpenRLHF training by reproducing the exact same forward passes outside of the distributed training environment.
 
 ### How it Works
@@ -43,16 +41,16 @@ python replay_inputs.py --compile --packing
 
 Based on comprehensive testing of all flag combinations:
 
-| Configuration | Flash Attention | Compile | Packing | Result |
-|---------------|-----------------|---------|---------|--------|
-| Default | | | | ✅ Success |
-| `--flash-attn` | ✅ | | | ✅ Success |
-| `--compile` | | ✅ | | ✅ Success |
-| `--packing` | | | ✅ | ✅ Success |
-| `--flash-attn --compile` | ✅ | ✅ | | ❌ **FAIL** |
-| `--flash-attn --packing` | ✅ | | ✅ | ✅ Success |
-| `--compile --packing` | | ✅ | ✅ | ✅ Success |
-| `--flash-attn --compile --packing` | ✅ | ✅ | ✅ | ✅ Success |
+| Configuration | Flash Attention | Compile | Packing | Result | Log |
+|---------------|-----------------|---------|---------|--------|-----|
+| Default | | | | ✅ Success | [log](logs/default.log) |
+| `--flash-attn` | ✅ | | | ✅ Success | [log](logs/flash-attn.log) |
+| `--compile` | | ✅ | | ✅ Success | [log](logs/compile.log) |
+| `--packing` | | | ✅ | ✅ Success | [log](logs/packing.log) |
+| `--flash-attn --compile` | ✅ | ✅ | | ✅ Success | [log](logs/flash-attn-compile.log) |
+| `--flash-attn --packing` | ✅ | | ✅ | ✅ Success | [log](logs/flash-attn-packing.log) |
+| `--compile --packing` | | ✅ | ✅ | ✅ Success | [log](logs/compile-packing.log) |
+| `--flash-attn --compile --packing` | ✅ | ✅ | ✅ | ❌ **FAIL** | [log](logs/flash-attn-compile-packing.log) |
 
 
 ### Dependencies
