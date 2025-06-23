@@ -1,8 +1,8 @@
-# Actor Debug Simple
+# Compiler Compatibility with OpenRLHF Actor
 
-This repository contains debugging utilities for isolating and testing OpenRLHF actor model behavior without distributed training dependencies.
+This repository contains debugging utilities for check athe compatibility of PyTorch Compiler with OpenRLHF Actor.
 
-`replay_inputs.py` replays previously captured actor model inputs to test model behavior in isolation. It's designed to help debug issues that occur during OpenRLHF training by reproducing the exact same forward passes outside of the distributed training environment.
+`replay_inputs.py` replays previously captured actor model inputs to test model behavior in isolation. It's designed to help debug issues that occur during OpenRLHF training by reproducing the exact same forward passes outside of the Ray/DeepSpeed distributed training environment.
 
 ### How it Works
 
@@ -10,6 +10,13 @@ This repository contains debugging utilities for isolating and testing OpenRLHF 
 2. **Initializes Actor**: Creates a standalone actor model instance using `init_actor_no_ds.py`
 3. **Replays Forward Pass**: Feeds the saved inputs through the actor model
 4. **Captures Results**: Records execution time, success/failure, and any errors
+
+### Dependencies
+
+- PyTorch with CUDA support
+- Transformers library
+- OpenRLHF installation in `../OpenRLHF/`
+- Flash Attention 2 (optional, can be disabled)
 
 ### Command Line Options
 
@@ -52,11 +59,4 @@ Based on comprehensive testing of all flag combinations:
 | `--compile --packing` | | ✅ | ✅ | ✅ Success | [log](logs/compile-packing.log) |
 | `--flash-attn --compile --packing` | ✅ | ✅ | ✅ | ❌ **FAIL** | [log](logs/flash-attn-compile-packing.log) |
 
-
-### Dependencies
-
-- PyTorch with CUDA support
-- Transformers library
-- OpenRLHF installation in `../OpenRLHF/`
-- Flash Attention 2 (optional, can be disabled)
 
